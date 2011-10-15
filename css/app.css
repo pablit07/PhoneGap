@@ -11,9 +11,13 @@ div.actionButton {
     
     background-color: #D4E6FF;
     
-    -webkit-transition-property: left, top;
+    -webkit-transition-property: left, bottom;
     -webkit-transition-duration: 1s;
     -webkit-transition-timing-function: ease-out;
+    
+    -moz-transition-property: left, bottom;
+    -moz-transition-duration: 1s;
+    -moz-transition-timing-function: ease-out;
 }
 
 div.actionButton span {
@@ -23,21 +27,18 @@ div.actionButton span {
     font-family: Helvetica, Calibri, Arial;
 }
 
+div.buttons {
+    position: absolute;
+    bottom: 0;
+}
+
 body.grid div.actionButton[order="1"] {
-    left: 0;
+    left: 16px;
+    bottom: -306px;
 }
 
 body.grid div.actionButton[order="2"] {
-    left: 202px;
-    top: -204px;
+    left: 224px;
+    bottom: 0;
 }
 
-body.grid div.actionButton[order="3"] {
-    left: 404px;
-    top: -408px;
-}
-
-body.alignedLeft div.actionButton {
-    left: 0;
-    top: 0;
-}
