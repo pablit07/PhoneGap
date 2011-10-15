@@ -1,6 +1,43 @@
+body {
+    width: 100%;
+}
+
 div.actionButton {
     width: 200px;
     height: 100px;
     border-radius: 12px;
     border: 1px solid black;
+    position: relative;
+    
+    background-color: #D4E6FF;
+    
+    -webkit-transition-property: left, top;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: ease-out;
+}
+
+div.actionButton span {
+    display: inline-block;
+    position: relative;
+    font-size: 18px;
+    font-family: Helvetica, Calibri, Arial;
+}
+
+body.grid div.actionButton[order="1"] {
+    left: 0;
+}
+
+body.grid div.actionButton[order="2"] {
+    left: 202px;
+    top: -204px;
+}
+
+body.grid div.actionButton[order="3"] {
+    left: 404px;
+    top: -408px;
+}
+
+body.alignedLeft div.actionButton {
+    left: 0;
+    top: 0;
 }

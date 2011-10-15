@@ -4,15 +4,25 @@ function App() {
     if (!this instanceof App) { return new App(); }
 
     var self = this;
+    
+    this.$body = $('body');
+    
+    $('div.actionButton', this.$body[0]).each(function() {
+        var $el = $(this);
+        var $text = $('span', this);
+        var x = ($el.width() - $text.width()) / 2;
+        var y = ($el.height() - $text.height()) / 2;
+        $text.css({'left': x+ 'px', 'top': y + 'px'});
+    });
 
-    $('body').delegate('div.actionButton', 'click', function(e) {
+    this.$body.delegate('div.actionButton', 'click', function(e) {
         
         var identifier = $(this).attr('identifier');
 
         if (!identifier) { return; }
 
         var action = "action_" + identifier;
-
+        
         if (self[action] && typeof self[action] == 'function') {
             self[action]();
         } else {
@@ -20,13 +30,14 @@ function App() {
         }
 
     });
-    
+
     this.$results = $('div#results');
 
 };
 
-App.prototype.action_1 = function() {
-    alert('1');
+App.prototype.action_changeGrid = function() {
+    this.$body.toggleClass('alignedLeft');
+    this.$body.toggleClass('grid');
 }
 
 App.prototype.action_2 = function() {
@@ -63,3 +74,4 @@ function Dialog(rInputs, oArgs) {
         
     })
 }
+
