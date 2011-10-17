@@ -87,7 +87,7 @@ App.prototype.action_vibrate = function() {
 }
 
 App.prototype.action_ajax = function() {
-    this.$results.load("http://http://wallst.com/business.asp");
+    this.$results.load("http://wallst.com/business.asp");
 
     return false;
 }
