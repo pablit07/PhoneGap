@@ -45,16 +45,20 @@ App.prototype.action_changeGrid = function() {
 App.prototype.action_accelerometer = function() {
     this.$results.html(_text);
 
-    function scrollUp() {
-        alert('scroll up');
-    }
+    function onSuccess(acceleration) {
+        alert('Acceleration X: ' + acceleration.x + '\n' +
+              'Acceleration Y: ' + acceleration.y + '\n' +
+              'Acceleration Z: ' + acceleration.z + '\n' +
+              'Timestamp: '      + acceleration.timestamp + '\n');
+    };
 
-    function scrollDown() {
-        alert('scroll down');
-    }
-    
-    document.addEventListener("volumeupbutton", scrollUp, false);
-    document.addEventListener("volumedownbutton", scrollDown, false);
+    function onError() {
+        alert('onError!');
+    };
+
+    var options = { frequency: 100 };  // Update every 3 seconds
+
+    var watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
 }
 
 App.prototype.action_vibrate = function() {
