@@ -40,6 +40,8 @@ function App() {
 App.prototype.action_changeGrid = function() {
     this.$body.toggleClass('alignedLeft');
     this.$body.toggleClass('grid');
+
+    return false;
 }
 
 App.prototype.action_accelerometer = function() {
@@ -74,14 +76,20 @@ App.prototype.action_accelerometer = function() {
     var options = { frequency: 100 };
 
     var watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+
+    return false;
 }
 
 App.prototype.action_vibrate = function() {
     navigator.notification.vibrate(2000);
+
+    return false;
 }
 
-App.prototype.action_phonegap = function() {
-    alert(device.phonegap);
+App.prototype.action_ajax = function() {
+    this.$results.load("http://http://wallst.com/business.asp");
+
+    return false;
 }
 
 App.prototype.action_custom1 = function() {
