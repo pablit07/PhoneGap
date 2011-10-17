@@ -11,6 +11,19 @@ div#Results {
     background-color: white;
 }
 
+div.field {
+    clear: both;
+    margin: 4px;
+}
+
+div.dialog {
+    border: 1px solid black;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 body.alignedLeft div#Results {
     height: 100%;
     width: 50%;
