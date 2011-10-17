@@ -1,6 +1,7 @@
 body {
     width: 100%;
     background-color: #eeeeee;
+    zoom: 1;
 }
 
 div#Results {
@@ -19,7 +20,7 @@ div.field {
 div.dialog {
     border: 1px solid black;
     z-index: 2;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
 }
