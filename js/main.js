@@ -86,7 +86,7 @@ App.prototype.action_ajax = function() {
     this.$results.load("http://wallst.com/business.asp");
 }
 
-App.prototype.action_custom1 = function() {
+App.prototype.action_contacts = function() {
     
     var self = this;
     
@@ -96,7 +96,7 @@ App.prototype.action_custom1 = function() {
             $.each(rContacts.length, function(i, e) {
                 var contact = $("<div class='field'>"+e.displayName+"</div>");
                 self.$results.append(contact);
-            })
+            });
             
         };
         
@@ -115,7 +115,7 @@ App.prototype.action_custom1 = function() {
     
 }
 
-App.prototype.action_custom2 = function() {
+App.prototype.action_custom1 = function() {
     alert('6');
 }
     
