@@ -43,22 +43,35 @@ App.prototype.action_changeGrid = function() {
 }
 
 App.prototype.action_accelerometer = function() {
+
+    var self = this;
+
     this.$results.html(_text);
 
-    alert(navigator.accelerometer);
+    var threshold = 1;
 
     function onSuccess(acceleration) {
-        alert('Acceleration X: ' + acceleration.x + '\n' +
-              'Acceleration Y: ' + acceleration.y + '\n' +
-              'Acceleration Z: ' + acceleration.z + '\n' +
-              'Timestamp: '      + acceleration.timestamp + '\n');
+
+        self.lastAcc = self.lastAcc || {x: 0, y: 0, z: 0};
+
+        var change = self.lastAcc.z - acceleration.z;
+
+        if (Math.abs(change) > threshold) {
+            if (change > 0) {
+               self.$results.scrollTop( self.$results.height() );
+            } else {
+                self.$results.scrollTop( 0 );
+            }
+        }
+
+        self.lastAcc = acceleration;
     };
 
     function onError() {
         alert('onError!');
     };
 
-    var options = { frequency: 100 };  // Update every 3 seconds
+    var options = { frequency: 100 };
 
     var watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
 }
