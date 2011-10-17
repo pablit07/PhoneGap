@@ -44,24 +44,21 @@ App.prototype.action_changeGrid = function() {
 
 App.prototype.action_accelerometer = function() {
     this.$results.html(_text);
+
+    function scrollUp() {
+        alert('scroll up');
+    }
+
+    function scrollDown() {
+        alert('scroll down');
+    }
     
-    function onSuccess(acceleration) {
-        alert('Acceleration X: ' + acceleration.x + '\n' +
-              'Acceleration Y: ' + acceleration.y + '\n' +
-              'Acceleration Z: ' + acceleration.z + '\n' +
-              'Timestamp: '      + acceleration.timestamp + '\n');
-    };
-    
-    function onError() {
-        alert('onError!');
-    };
-    
-    alert(navigator.accelerometer);
-    navigator.accelerometer.watchAcceleration(onSuccess, onError);
+    document.addEventListener("volumeupbutton", scrollUp, false);
+    document.addEventListener("volumedownbutton", scrollDown, false);
 }
 
-App.prototype.action_3 = function() {
-    alert('3');
+App.prototype.action_vibrate = function() {
+    navigator.notification.vibrate(2000);
 }
 
 App.prototype.action_ajax = function() {
