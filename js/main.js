@@ -93,7 +93,11 @@ App.prototype.action_custom1 = function() {
     var dialog = new Dialog([{displayName: "Enter contact search term: ", name: 'name'}], {callback: function(oResults) {
         
         function onSuccess(rContacts) {
-            self.$results.html(rContacts.length);
+            $.each(rContacts.length, function(i, e) {
+                var contact = $("<div class='field'>"+e.displayName+"</div>");
+                self.$results.append(contact);
+            })
+            
         };
         
         function onError() {
