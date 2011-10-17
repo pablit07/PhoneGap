@@ -61,8 +61,8 @@ App.prototype.action_vibrate = function() {
     navigator.notification.vibrate(2000);
 }
 
-App.prototype.action_ajax = function() {
-    alert('4');
+App.prototype.action_phonegap = function() {
+    alert(device.phonegap);
 }
 
 App.prototype.action_custom1 = function() {
