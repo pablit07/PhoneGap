@@ -45,6 +45,8 @@ App.prototype.action_changeGrid = function() {
 App.prototype.action_accelerometer = function() {
     this.$results.html(_text);
 
+    alert(navigator.accelerometer);
+
     function onSuccess(acceleration) {
         alert('Acceleration X: ' + acceleration.x + '\n' +
               'Acceleration Y: ' + acceleration.y + '\n' +
