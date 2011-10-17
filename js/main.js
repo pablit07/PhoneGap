@@ -56,7 +56,7 @@ App.prototype.action_accelerometer = function() {
         alert('onError!');
     };
     
-    setInterval()
+    alert(navigator.accelerometer);
     navigator.accelerometer.watchAcceleration(onSuccess, onError);
 }
 
