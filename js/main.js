@@ -93,11 +93,8 @@ App.prototype.action_contacts = function() {
     var dialog = new Dialog([{displayName: "Enter contact search term: ", name: 'name', value: "tom"}], {callback: function(oResults) {
         
         function onSuccess(rContacts) {
-            $.each(rContacts.length, function(i, e) {
-                for (var prop in e) {
-                    self.$results.append($("<div class='field'>"+prop+': '+e[prop]+"</div>"));
-                }
-                self.$results.append($("<br /><br />"));
+
+                self.$results.append($("<div class='field'> Found: "+rContacts.length+"</div>"));
             });
             
         };
