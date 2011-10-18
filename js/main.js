@@ -90,12 +90,14 @@ App.prototype.action_contacts = function() {
     
     var self = this;
     
-    var dialog = new Dialog([{displayName: "Enter contact search term: ", name: 'name'}], {callback: function(oResults) {
+    var dialog = new Dialog([{displayName: "Enter contact search term: ", name: 'name', value: "tom"}], {callback: function(oResults) {
         
         function onSuccess(rContacts) {
             $.each(rContacts.length, function(i, e) {
-                var contact = $("<div class='field'>"+e.displayName+"</div>");
-                self.$results.append(contact);
+                for (var prop in e) {
+                    self.$results.append($("<div class='field'>"+prop+': '+e[prop]+"</div>"));
+                }
+                self.$results.append($("<br /><br />"));
             });
             
         };
@@ -119,8 +121,12 @@ App.prototype.action_custom1 = function() {
     alert('6');
 }
     
-    
+//instantiate the app    
 var App = new App();
+
+
+
+//Dialog helper class
 
 function Dialog(rInputs, oArgs) {
 
@@ -136,7 +142,7 @@ function Dialog(rInputs, oArgs) {
     this.$dialog = $("<div class='dialog'><form></form></div>");
 
     $.each(rInputs, function(i, e) {
-        self.$dialog.append($("<div class='field'>"+e.displayName+"</div>").append($("<input type='text' name='"+e.name+"' />")));
+        self.$dialog.append($("<div class='field'>"+e.displayName+"</div>").append($("<input type='text' name='"+e.name+"' value='"+e.value+"' />")));
     });
     
     this.$dialog.append($("<input type='button' value='Submit' />").click(function() {
